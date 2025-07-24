@@ -2,11 +2,10 @@
   "name": "dogschool-hope",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "dev:web": "yarn workspace web dev",
+    "dev:api": "yarn workspace api dev",
+    "dev:mobile": "cd apps/mobile && expo start",
+    "dev": "concurrently \"yarn dev:web\" \"yarn dev:api\""
   },
   "devDependencies": {
     "prettier": "^3.6.2",
@@ -20,5 +19,8 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "expo": "^53.0.20"
+  }
 }
